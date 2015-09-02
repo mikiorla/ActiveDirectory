@@ -6,7 +6,7 @@ $log = "D:\Scripts\_Reports\Kreiranje Naloga\Kreiranje-Naloga-Prodavci.txt"
 
 $users = Import-Csv "D:\Scripts\_input\Kreiranje Prodavaca - test.csv"
 $Password = "Novisad1" #inicijalni password
-$postojeci = New-Object System.Collections.ArrayList
+$existing = New-Object System.Collections.ArrayList
 $allusers = Get-QADUser -SizeLimit 0
 #msExchHomeServerName_v = "/O=DDOR Novi Sad ad/OU=LIMAN/cn=Configuration/cn=Servers/cn=HERMES"
 #$homeMDB_v ="CN=Ostali,CN=First Storage Group,CN=InformationStore,CN=HERMES,CN=Servers,CN=LIMAN,CN=Administrative Groups,CN=DDOR Novi Sad ad,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=ddor,DC=local"
@@ -385,7 +385,7 @@ Write-Output $out5 >> $log
 Write-Output "_______________________________" >> $log
 $out5 = $null
 #Write-Host "Korisnik sa imenom "$chk_name.DisplayName "|" $chk_name.parentcontainer  "postoji, upisujem u niz!"
-$null_p = $postojeci.Add($chk_name)
+$null_p = $existing.Add($chk_name)
 }
 
 #Write-Host `n
@@ -394,9 +394,9 @@ Write-Output `n >> $log
 
 Write-Output `n >> $log
 Write-Output "____________________" >> $log
-Write-Output "Postojeci korisnici:" $postojeci >> $log
+Write-Output "Postojeci korisnici:" $existing >> $log
 #Write-Host "Postojeci korisnici:"
-$postojeci
+$existing
 
 
 
